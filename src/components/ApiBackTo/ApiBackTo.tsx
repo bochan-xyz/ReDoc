@@ -3,26 +3,25 @@ import * as React from 'react';
 import { ApiBackToText } from './styled.elements';
 
 @observer
-export class ApiBackTo extends React.Component<{ isOt2: boolean }> {
+export class ApiBackTo extends React.Component<{ groupId: string | undefined; groupName: string | undefined }> {
   state = {
     backTextColor: '#0084CE'
   };
 
-  handleHoverState = () => {this.setState({backTextColor: '#004267'})};
-  handleLeaveState = () => {this.setState({backTextColor: '#0084CE'})};
+  handleHoverState = () => { this.setState({ backTextColor: '#004267' }) };
+  handleLeaveState = () => { this.setState({ backTextColor: '#0084CE' }) };
   render() {
-    const { isOt2 } = this.props;
-    return(
+    const { groupId } = this.props;
+    const { groupName } = this.props;
+    return (
       <div>
-        <ApiBackToText href={isOt2?'/apis': '/apis/other'}
-                       onMouseEnter={this.handleHoverState}
-                       onMouseLeave={this.handleLeaveState}>
+        <ApiBackToText href={'/apis/child/' + groupId + '/' + groupName}
+          onMouseEnter={this.handleHoverState}
+          onMouseLeave={this.handleLeaveState}>
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M12.5 22L2 11.5L12.5 1" stroke={this.state.backTextColor} strokeWidth="2" strokeLinecap="round"/>
+            <path d="M12.5 22L2 11.5L12.5 1" stroke={this.state.backTextColor} strokeWidth="2" strokeLinecap="round" />
           </svg>
-
-          {isOt2 ? <span style={{color: this.state.backTextColor}}>OT2 services</span>
-                 : <span style={{color: this.state.backTextColor}}>OpenText products</span>}
+          <span style={{ color: this.state.backTextColor }}>{groupName}</span>
         </ApiBackToText>
       </div>
     );

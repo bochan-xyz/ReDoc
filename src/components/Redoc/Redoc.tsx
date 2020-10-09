@@ -34,7 +34,7 @@ export class Redoc extends React.Component<RedocProps> {
 
   render() {
     const {
-      store: {menu, options, search, marker },
+      store: { menu, options, search, marker },
     } = this.props;
     const store = this.props.store;
     return (
@@ -43,7 +43,7 @@ export class Redoc extends React.Component<RedocProps> {
           <OptionsProvider value={options}>
             <RedocWrap className="redoc-wrap">
               <StickyResponsiveSidebar menu={menu} className="menu-content">
-                <ApiBackTo isOt2={options.isOt2} />
+                <ApiBackTo groupId={options.apiGroupId} groupName={options.apiGroupName} />
                 {(!options.disableSearch && (
                   <SearchBox
                     search={search!}
