@@ -4,7 +4,7 @@ import * as React from 'react';
 import { ExternalDocumentation } from '../ExternalDocumentation/ExternalDocumentation';
 import { AdvancedMarkdown } from '../Markdown/AdvancedMarkdown';
 
-import { H1, H2, MiddlePanel, Row, Section, ShareLink } from '../../common-elements';
+import { H1, H2, MiddlePanel, Row, Section } from '../../common-elements';
 import { ContentItemModel } from '../../services/MenuBuilder';
 import { GroupModel, OperationModel } from '../../services/models';
 import { Operation } from '../Operation/Operation';

@@ -2,7 +2,7 @@ import * as React from 'react';
 
 import { SecuritySchemesModel } from '../../services/models';
 
-import { H2, MiddlePanel, Row, Section, ShareLink } from '../../common-elements';
+import { H2, MiddlePanel, Row, Section } from '../../common-elements';
 import { OpenAPISecurityScheme } from '../../types';
 import { titleize } from '../../utils/helpers';
 import { Markdown } from '../Markdown/Markdown';
