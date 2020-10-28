@@ -20,7 +20,7 @@ export const Tabs = styled(ReactTabs)`
       border-bottom: 1px solid rgba(0, 0, 0, 0.5);
       cursor: pointer;
       text-align: center;
-      outline: none;
+      
       color: ${({ theme }) => darken(theme.colors.tonalOffset, theme.rightPanel.textColor)};
       margin: 0
         ${({ theme }) => `${theme.spacing.unit}px ${theme.spacing.unit}px ${theme.spacing.unit}px`};
@@ -71,7 +71,7 @@ export const Tabs = styled(ReactTabs)`
   }
 `;
 
-export const SmallTabs = styled(Tabs)`
+export const SmallTabs = styled(Tabs as any)`
   > ul {
     display: block;
     > li {

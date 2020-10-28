@@ -26,7 +26,7 @@ const OperationRow = styled(Row)`
 `;
 
 const Description = styled.div`
-  margin-bottom: ${({theme}) => theme.spacing.unit * 6}px;
+  margin-bottom: ${({ theme }) => theme.spacing.unit * 6}px;
 `;
 
 export interface OperationProps {
@@ -36,9 +36,9 @@ export interface OperationProps {
 @observer
 export class Operation extends React.Component<OperationProps> {
   render() {
-    const {operation} = this.props;
+    const { operation } = this.props;
 
-    const {name: summary, description, deprecated, externalDocs} = operation;
+    const { name: summary, description, deprecated, externalDocs } = operation;
     const hasDescription = !!(description || externalDocs);
 
     return (
@@ -46,37 +46,40 @@ export class Operation extends React.Component<OperationProps> {
         {options => (
           <OperationRow>
             <MiddlePanel>
-              <div style={{display: 'flex'}}>
-                <div style={{zoom: '125%'}}>
+              <div style={{ display: 'flex' }}>
+                <div style={{ zoom: '125%' }}>
                   <OperationBadge type={operation.httpVerb}>{shortenHTTPVerb(operation.httpVerb)}</OperationBadge>
                 </div>
-                <div style={{margin: '-5px 0 0 7px'}}>
-                  <div style={{fontWeight: 'bolder'}}>
-                    <H2>
-                      {summary} {deprecated && <Badge type="warning"> Deprecated </Badge>}
-                    </H2>
+                <div style={{ margin: '-5px 0 0 7px' }}>
+                  <div style={{ fontWeight: 'bolder' }}>
+                    <a href={'#' + operation.id} style={{ textDecoration: 'none' }}>
+                      <H2>
+                        {summary} {deprecated && <Badge type="warning"> Deprecated </Badge>}
+                      </H2>
+                    </a>
                   </div>
                   <div>
-                    {options.pathInMiddlePanel && <Endpoint operation={operation} inverted={true}/>}
+                    {options.pathInMiddlePanel && <Endpoint operation={operation} inverted={true} />}
                     {hasDescription && (
                       <Description>
-                        {description !== undefined && <Markdown source={description}/>}
-                        {externalDocs && <ExternalDocumentation externalDocs={externalDocs}/>}
+                        {description !== undefined && <Markdown source={description} />}
+                        {externalDocs && <ExternalDocumentation externalDocs={externalDocs} />}
                       </Description>
                     )}
                   </div>
                 </div>
               </div>
-              <Extensions extensions={operation.extensions}/>
-              <SecurityRequirements securities={operation.security}/>
-              <Parameters parameters={operation.parameters} body={operation.requestBody}/>
-              <ResponsesList responses={operation.responses}/>
+              <Extensions extensions={operation.extensions} />
+              <SecurityRequirements securities={operation.security} />
+              <Parameters parameters={operation.parameters} body={operation.requestBody} />
+              <ResponsesList responses={operation.responses} />
             </MiddlePanel>
             <DarkRightPanel>
-              <OperationPanel operation={operation} options={options}/>
+              <OperationPanel operation={operation} options={options} />
             </DarkRightPanel>
           </OperationRow>
-        )}
+        )
+        }
       </OptionsContext.Consumer>
     );
   }

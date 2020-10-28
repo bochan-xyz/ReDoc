@@ -22,6 +22,20 @@ const JsonViewerWrap = styled.div`
 class Json extends React.PureComponent<JsonProps> {
   node: HTMLDivElement;
 
+  handleKeyDownExpand = (event: React.KeyboardEvent<HTMLSpanElement>) => {
+    if (event.keyCode === 13) { // ENTER
+      this.expandAll();
+      event.stopPropagation();
+    }
+  };
+
+  handleKeyDownCollapse = (event: React.KeyboardEvent<HTMLSpanElement>) => {
+    if (event.keyCode === 13) { // ENTER
+      this.collapseAll();
+      event.stopPropagation();
+    }
+  };
+
   render() {
     return <CopyButtonWrapper data={this.props.data}>{this.renderInner}</CopyButtonWrapper>;
   }
@@ -30,8 +44,8 @@ class Json extends React.PureComponent<JsonProps> {
     <JsonViewerWrap>
       <SampleControls>
         {renderCopyButton()}
-        <span onClick={this.expandAll}> Expand all </span>
-        <span onClick={this.collapseAll}> Collapse all </span>
+        <span onClick={this.expandAll} tabIndex={0} onKeyDown={this.handleKeyDownExpand}> Expand all </span>
+        <span onClick={this.collapseAll} tabIndex={0} onKeyDown={this.handleKeyDownCollapse}> Collapse all </span>
       </SampleControls>
       <OptionsContext.Consumer>
         {options => (

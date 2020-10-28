@@ -11,13 +11,20 @@ export interface CopyButtonWrapperProps {
 export class CopyButtonWrapper extends React.PureComponent<
   CopyButtonWrapperProps,
   { tooltipShown: boolean }
-> {
+  > {
   constructor(props) {
     super(props);
     this.state = {
       tooltipShown: false,
     };
   }
+
+  handleKeyDown = (event: React.KeyboardEvent<HTMLSpanElement>) => {
+    if (event.keyCode === 13) { // ENTER
+      this.copy();
+      event.stopPropagation();
+    }
+  };
 
   render() {
     return this.props.children({ renderCopyButton: this.renderCopyButton });
@@ -34,7 +41,7 @@ export class CopyButtonWrapper extends React.PureComponent<
 
   renderCopyButton = () => {
     return (
-      <span onClick={this.copy}>
+      <span onClick={this.copy} tabIndex={0} onKeyDown={this.handleKeyDown}>
         <Tooltip
           title={ClipboardService.isSupported() ? 'Copied' : 'Not supported in your browser'}
           open={this.state.tooltipShown}

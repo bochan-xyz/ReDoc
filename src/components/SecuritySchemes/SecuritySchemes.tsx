@@ -72,8 +72,9 @@ export class SecurityDefs extends React.PureComponent<SecurityDefsProps> {
         <Row>
           <MiddlePanel>
             <H2>
-              <ShareLink to={scheme.sectionId} />
-              {scheme.id}
+              <a href={'#' + scheme.sectionId} style={{ textDecoration: 'none' }}>
+                {scheme.id}
+              </a>
             </H2>
             <Markdown source={scheme.description || ''} />
             <StyledMarkdownBlock>

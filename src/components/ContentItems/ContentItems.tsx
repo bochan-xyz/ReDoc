@@ -72,9 +72,10 @@ export class SectionItem extends React.Component<ContentItemProps> {
       <>
         <Row>
           <MiddlePanel compact={false}>
-            <Header style={{borderBottom: '1px solid rgba(0, 0, 0, 0.2)', paddingBottom: '12px'}}>
-              <ShareLink to={this.props.item.id} />
-              {name}
+            <Header style={{ borderBottom: '1px solid rgba(0, 0, 0, 0.2)', paddingBottom: '12px' }}>
+              <a href={'#' + this.props.item.id} style={{ textDecoration: 'none' }}>
+                {name}
+              </a>
             </Header>
           </MiddlePanel>
         </Row>

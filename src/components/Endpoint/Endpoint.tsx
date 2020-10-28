@@ -35,6 +35,21 @@ export class Endpoint extends React.Component<EndpointProps, EndpointState> {
     };
   }
 
+  handleKeyDown = (event: React.KeyboardEvent<HTMLDivElement>) => {
+    // open/close the dropdown
+    if (event.keyCode === 13) { // ENTER
+      this.toggle();
+      event.stopPropagation();
+    }
+
+    // hide dropdown
+    if (event.keyCode == 9 && event.shiftKey) { // shift-TAB
+      if (this.state.expanded) {
+        this.toggle();
+      }
+    }
+  };
+
   toggle = () => {
     this.setState({ expanded: !this.state.expanded });
   };
@@ -48,7 +63,8 @@ export class Endpoint extends React.Component<EndpointProps, EndpointState> {
       <OptionsContext.Consumer>
         {options => (
           <OperationEndpointWrap>
-            <EndpointInfo onClick={this.toggle} expanded={expanded} inverted={inverted}>
+            <EndpointInfo onClick={this.toggle} expanded={expanded} inverted={inverted}
+              tabIndex={0} onKeyDown={this.handleKeyDown}>
               <HttpVerb type={operation.httpVerb}> {operation.httpVerb}</HttpVerb>{' '}
               <ServerRelativeURL>{operation.path}</ServerRelativeURL>
               <ShelfIcon
@@ -60,14 +76,14 @@ export class Endpoint extends React.Component<EndpointProps, EndpointState> {
               />
             </EndpointInfo>
             <ServersOverlay expanded={expanded}>
-              {operation.servers.map(server => {
+              {operation.servers.map((server, idx, theArray) => {
                 const normalizedUrl = options.expandDefaultServerVariables
                   ? expandDefaultServerVariables(server.url, server.variables)
                   : server.url;
                 return (
                   <ServerItem key={normalizedUrl}>
                     <Markdown source={server.description || ''} compact={true} />
-                    <SelectOnClick>
+                    <SelectOnClick parentForToggle={idx == (theArray.length - 1) ? this : undefined}>
                       <ServerUrl>
                         <span>
                           {hideHostname || options.hideHostname

@@ -6,7 +6,7 @@ import styled, { css } from '../../styled-components';
 
 export const OperationBadge = styled.span.attrs((props: { type: string }) => ({
   className: `operation-type ${props.type}`,
-}))<{ type: string }>`
+})) <{ type: string }>`
   width: 32px;
   display: inline-block;
   height: ${props => props.theme.typography.code.fontSize};
@@ -124,7 +124,7 @@ export const MenuItemLabel = styled.label.attrs((props: MenuItemLabelType) => ({
   className: classnames('-depth' + props.depth, {
     active: props.active,
   }),
-}))<MenuItemLabelType>`
+})) <MenuItemLabelType>`
   cursor: pointer;
   color: ${props => (props.active ? props.theme.menu.activeTextColor : props.theme.menu.textColor)};
   margin: 0;

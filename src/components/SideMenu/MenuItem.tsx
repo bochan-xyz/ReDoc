@@ -18,6 +18,13 @@ export interface MenuItemProps {
 export class MenuItem extends React.Component<MenuItemProps> {
   ref = React.createRef<HTMLLabelElement>();
 
+  handleKeyDown = (event: React.KeyboardEvent<HTMLLIElement>) => {
+    if (event.keyCode === 13) { // ENTER
+      this.props.onActivate!(this.props.item);
+      event.stopPropagation();
+    }
+  };
+
   activate = (evt: React.MouseEvent<HTMLElement>) => {
     this.props.onActivate!(this.props.item);
     evt.stopPropagation();
@@ -40,21 +47,22 @@ export class MenuItem extends React.Component<MenuItemProps> {
   render() {
     const { item, withoutChildren } = this.props;
     return (
-      <MenuItemLi onClick={this.activate} depth={item.depth} data-item-id={item.id}>
+      <MenuItemLi onClick={this.activate} depth={item.depth} data-item-id={item.id}
+        tabIndex={0} onKeyDown={this.handleKeyDown}>
         {item.type === 'operation' ? (
           <OperationMenuItemContent {...this.props} item={item as OperationModel} />
         ) : (
-          <MenuItemLabel depth={item.depth} active={item.active} type={item.type} ref={this.ref}>
-            <MenuItemTitle title={item.name}>
-              {item.name}
-              {this.props.children}
-            </MenuItemTitle>
-            {(item.depth > 0 && item.items.length > 0 && (
-              <ShelfIcon float={'right'} direction={item.expanded ? 'down' : 'right'} />
-            )) ||
-              null}
-          </MenuItemLabel>
-        )}
+            <MenuItemLabel depth={item.depth} active={item.active} type={item.type} ref={this.ref}>
+              <MenuItemTitle title={item.name}>
+                {item.name}
+                {this.props.children}
+              </MenuItemTitle>
+              {(item.depth > 0 && item.items.length > 0 && (
+                <ShelfIcon float={'right'} direction={item.expanded ? 'down' : 'right'} />
+              )) ||
+                null}
+            </MenuItemLabel>
+          )}
         {!withoutChildren && item.items && item.items.length > 0 && (
           <MenuItems
             expanded={item.expanded}

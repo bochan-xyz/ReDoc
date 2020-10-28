@@ -30,6 +30,14 @@ export interface FieldProps extends SchemaOptions {
 
 @observer
 export class Field extends React.Component<FieldProps> {
+
+  handleKeyDown = (event: React.KeyboardEvent<HTMLTableDataCellElement>) => {
+    if (event.keyCode === 13) { // ENTER
+      this.toggle();
+      event.stopPropagation();
+    }
+  };
+
   toggle = () => {
     if (this.props.field.expanded === undefined && this.props.expandByDefault) {
       this.props.field.expanded = false;
@@ -50,6 +58,8 @@ export class Field extends React.Component<FieldProps> {
         className={deprecated ? 'deprecated' : ''}
         kind={kind}
         title={name}
+        tabIndex={0}
+        onKeyDown={this.handleKeyDown}
       >
         <PropertyBullet />
         {name}
@@ -57,12 +67,12 @@ export class Field extends React.Component<FieldProps> {
         {required && <RequiredLabel> required </RequiredLabel>}
       </ClickablePropertyNameCell>
     ) : (
-      <PropertyNameCell className={deprecated ? 'deprecated' : undefined} kind={kind} title={name}>
-        <PropertyBullet />
-        {name}
-        {required && <RequiredLabel> required </RequiredLabel>}
-      </PropertyNameCell>
-    );
+        <PropertyNameCell className={deprecated ? 'deprecated' : undefined} kind={kind} title={name}>
+          <PropertyBullet />
+          {name}
+          {required && <RequiredLabel> required </RequiredLabel>}
+        </PropertyNameCell>
+      );
 
     return (
       <>

@@ -8,15 +8,14 @@ export const MiddlePanel = styled.div<{ compact?: boolean }>`
   ${({ compact, theme }) =>
     media.lessThan('medium', true)`
     width: 100%;
-    padding: ${`${compact ? 0 : theme.spacing.sectionVertical}px ${
-      theme.spacing.sectionHorizontal
-    }px`};
+    padding: ${`${compact ? 0 : theme.spacing.sectionVertical}px ${theme.spacing.sectionHorizontal
+      }px`};
   `};
 `;
 
 export const Section = styled.div.attrs(props => ({
   [SECTION_ATTR]: props.id,
-}))<{ underlined?: boolean }>`
+})) <{ underlined?: boolean }>`
   padding: ${props => props.theme.spacing.sectionVertical}px 0;
 
   &:last-child {
@@ -41,7 +40,7 @@ export const Section = styled.div.attrs(props => ({
       width: 100%;
       display: block;
       content: '';
-      border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+      border-bottom: 2px solid lightgrey;
     }
   `) ||
     ''}
