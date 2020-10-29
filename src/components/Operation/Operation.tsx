@@ -35,6 +35,7 @@ export interface OperationProps {
 
 @observer
 export class Operation extends React.Component<OperationProps> {
+
   render() {
     const { operation } = this.props;
 
@@ -52,11 +53,9 @@ export class Operation extends React.Component<OperationProps> {
                 </div>
                 <div style={{ margin: '-5px 0 0 7px' }}>
                   <div style={{ fontWeight: 'bolder' }}>
-                    <a href={'#' + operation.id} style={{ textDecoration: 'none' }}>
-                      <H2>
-                        {summary} {deprecated && <Badge type="warning"> Deprecated </Badge>}
-                      </H2>
-                    </a>
+                    <H2 style={{ marginTop: '6px' }} tabIndex={0}>
+                      {summary} {deprecated && <Badge type="warning"> Deprecated </Badge>}
+                    </H2>
                   </div>
                   <div>
                     {options.pathInMiddlePanel && <Endpoint operation={operation} inverted={true} />}

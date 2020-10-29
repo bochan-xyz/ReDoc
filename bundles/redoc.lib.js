@@ -7611,7 +7611,7 @@ var ErrorBoundary_ErrorBoundary = /** @class */ (function (_super) {
                 external_react_["createElement"]("br", null),
                 external_react_["createElement"]("small", null,
                     " Commit: ",
-                    "4cd91614"));
+                    "86901595"));
         }
         return external_react_["Children"].only(this.props.children);
     };
@@ -14107,13 +14107,12 @@ var Operation_Operation = /** @class */ (function (_super) {
                         external_react_["createElement"]("div", { style: {
                                 fontWeight: 'bolder'
                             } },
-                            external_react_["createElement"]("a", { href: '#' + operation.id, style: {
-                                    textDecoration: 'none'
-                                } },
-                                external_react_["createElement"](H2, null,
-                                    summary,
-                                    " ",
-                                    deprecated && external_react_["createElement"](Badge, { type: "warning" }, " Deprecated ")))),
+                            external_react_["createElement"](H2, { style: {
+                                    marginTop: '6px'
+                                }, tabIndex: 0 },
+                                summary,
+                                " ",
+                                deprecated && external_react_["createElement"](Badge, { type: "warning" }, " Deprecated "))),
                         external_react_["createElement"]("div", null,
                             options.pathInMiddlePanel && external_react_["createElement"](Endpoint_Endpoint, { operation: operation, inverted: true }),
                             hasDescription && external_react_["createElement"](Description, null,
@@ -14205,13 +14204,10 @@ var ContentItems_SectionItem = /** @class */ (function (_super) {
         return external_react_["createElement"](external_react_["Fragment"], null,
             external_react_["createElement"](Row, null,
                 external_react_["createElement"](MiddlePanel, { compact: false },
-                    external_react_["createElement"](Header, { style: {
+                    external_react_["createElement"](Header, { tabIndex: 0, style: {
                             borderBottom: '1px solid rgba(0, 0, 0, 0.2)',
                             paddingBottom: '12px'
-                        } },
-                        external_react_["createElement"]("a", { href: '#' + this.props.item.id, style: {
-                                textDecoration: 'none'
-                            } }, name)))),
+                        } }, name))),
             external_react_["createElement"](AdvancedMarkdown_AdvancedMarkdown, { source: description || '', htmlWrap: middlePanelWrap }),
             externalDocs && external_react_["createElement"](Row, null,
                 external_react_["createElement"](MiddlePanel, null,
@@ -14260,7 +14256,7 @@ var ResponseSamples_ResponseSamples = /** @class */ (function (_super) {
         return responses.length > 0 && external_react_["createElement"]("div", null,
             external_react_["createElement"](RightPanelHeader, null, " Response samples "),
             external_react_["createElement"](Tabs, { defaultIndex: 0 },
-                external_react_["createElement"](external_react_tabs_["TabList"], null, responses.map(function (response) { return external_react_["createElement"](external_react_tabs_["Tab"], { className: 'tab-' + response.type, key: response.code }, response.code); })),
+                external_react_["createElement"](external_react_tabs_["TabList"], null, responses.map(function (response) { return external_react_["createElement"](external_react_tabs_["Tab"], { className: 'tab-' + response.type, key: response.code, tabIndex: '0' }, response.code); })),
                 responses.map(function (response) { return external_react_["createElement"](external_react_tabs_["TabPanel"], { key: response.code },
                     external_react_["createElement"]("div", null,
                         external_react_["createElement"](PayloadSamples_PayloadSamples, { content: response.content }))); }))) || null;

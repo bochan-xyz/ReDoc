@@ -28,7 +28,7 @@ export class ResponseSamples extends React.Component<ResponseSamplesProps> {
           <Tabs defaultIndex={0}>
             <TabList>
               {responses.map(response => (
-                <Tab className={'tab-' + response.type} key={response.code}>
+                <Tab className={'tab-' + response.type} key={response.code} tabIndex={'0'}>
                   {response.code}
                 </Tab>
               ))}
