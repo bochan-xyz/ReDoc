@@ -7611,7 +7611,7 @@ var ErrorBoundary_ErrorBoundary = /** @class */ (function (_super) {
                 external_react_["createElement"]("br", null),
                 external_react_["createElement"]("small", null,
                     " Commit: ",
-                    "86901595"));
+                    "a2d1d224"));
         }
         return external_react_["Children"].only(this.props.children);
     };
@@ -13854,11 +13854,20 @@ function BodyContent(props) {
 var ResponseTitle_ResponseTitle = /** @class */ (function (_super) {
     Object(external_tslib_["__extends"])(ResponseTitle, _super);
     function ResponseTitle() {
-        return _super !== null && _super.apply(this, arguments) || this;
+        var _this = _super !== null && _super.apply(this, arguments) || this;
+        _this.handleKeyDown = function (event) {
+            var _a;
+            if (event.keyCode === 13) {
+                // ENTER
+                (_a = _this.props.onClick) === null || _a === void 0 ? void 0 : _a.call(_this.props.parent);
+                event.stopPropagation();
+            }
+        };
+        return _this;
     }
     ResponseTitle.prototype.render = function () {
         var _a = this.props, title = _a.title, type = _a.type, empty = _a.empty, code = _a.code, opened = _a.opened, className = _a.className, onClick = _a.onClick;
-        return external_react_["createElement"]("div", { className: className, onClick: !empty && onClick || undefined },
+        return external_react_["createElement"]("div", { className: className, onClick: !empty && onClick || undefined, tabIndex: empty ? undefined : 0, onKeyDown: empty ? undefined : this.handleKeyDown },
             !empty && external_react_["createElement"](ShelfIcon, { size: '1.5em', color: type, direction: opened ? 'down' : 'right', float: 'left' }),
             external_react_["createElement"]("strong", null,
                 code,
@@ -13960,7 +13969,7 @@ var Response_ResponseView = /** @class */ (function (_super) {
         var mimes = content === undefined ? [] : content.mediaTypes.filter(function (mime) { return mime.schema !== undefined; });
         var empty = headers.length === 0 && mimes.length === 0 && !description;
         return external_react_["createElement"]("div", null,
-            external_react_["createElement"](StyledResponseTitle, { onClick: this.toggle, type: type, empty: empty, title: summary || '', code: code, opened: expanded }),
+            external_react_["createElement"](StyledResponseTitle, { onClick: this.toggle, type: type, empty: empty, title: summary || '', code: code, opened: expanded, parent: this }),
             expanded && !empty && external_react_["createElement"](ResponseDetailsWrap, null,
                 external_react_["createElement"](ResponseDetails_ResponseDetails, { response: this.props.response })));
     };
