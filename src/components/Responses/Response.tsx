@@ -7,6 +7,7 @@ import { ResponseDetailsWrap, StyledResponseTitle } from './styled.elements';
 
 @observer
 export class ResponseView extends React.Component<{ response: ResponseModel }> {
+
   toggle = () => {
     this.props.response.toggle();
   };
@@ -27,13 +28,16 @@ export class ResponseView extends React.Component<{ response: ResponseModel }> {
           title={summary || ''}
           code={code}
           opened={expanded}
+          parent={this}
         />
-        {expanded && !empty && (
-          <ResponseDetailsWrap>
-            <ResponseDetails response={this.props.response} />
-          </ResponseDetailsWrap>
-        )}
-      </div>
+        {
+          expanded && !empty && (
+            <ResponseDetailsWrap>
+              <ResponseDetails response={this.props.response} />
+            </ResponseDetailsWrap>
+          )
+        }
+      </div >
     );
   }
 }

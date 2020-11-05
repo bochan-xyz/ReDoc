@@ -55,7 +55,7 @@ export class Link extends React.Component<{ to: string; className?: string; chil
     return (
       <StoreConsumer>
         {store => (
-          <a
+          <a tabIndex={-1}
             className={this.props.className}
             href={store!.menu.history.linkForId(this.props.to)}
             onClick={this.navigate.bind(this, store!.menu.history)}

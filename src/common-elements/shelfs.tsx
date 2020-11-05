@@ -43,8 +43,8 @@ export const ShelfIcon = styled(IntShelfIcon)`
 
   polygon {
     fill: ${props =>
-      (props.color && props.theme.colors[props.color] && props.theme.colors[props.color].main) ||
-      props.color};
+    (props.color && props.theme.colors[props.color] && props.theme.colors[props.color].main) ||
+    props.color};
   }
 `;
 

@@ -11,13 +11,24 @@ export interface ResponseTitleProps {
   opened?: boolean;
   className?: string;
   onClick?: () => void;
+  parent: any;
 }
 
 export class ResponseTitle extends React.PureComponent<ResponseTitleProps> {
+
+  handleKeyDown = (event: React.KeyboardEvent<HTMLDivElement>) => {
+    if (event.keyCode === 13) { // ENTER
+      this.props.onClick?.call(this.props.parent);
+      event.stopPropagation();
+    }
+  };
+
   render() {
     const { title, type, empty, code, opened, className, onClick } = this.props;
     return (
-      <div className={className} onClick={(!empty && onClick) || undefined}>
+      <div className={className} onClick={(!empty && onClick) || undefined}
+        tabIndex={empty ? undefined : 0} onKeyDown={empty ? undefined : this.handleKeyDown}
+      >
         {!empty && (
           <ShelfIcon
             size={'1.5em'}

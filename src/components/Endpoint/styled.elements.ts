@@ -36,7 +36,7 @@ export const EndpointInfo = styled.div<{ expanded?: boolean; inverted?: boolean 
 
 export const HttpVerb = styled.span.attrs((props: { type: string }) => ({
   className: `http-verb ${props.type}`,
-}))<{ type: string }>`
+})) <{ type: string }>`
   font-size: 0.929em;
   line-height: 20px;
   background-color: ${(props: any) => props.theme.colors.http[props.type] || '#999999'};
@@ -60,7 +60,7 @@ export const ServersOverlay = styled.div<{ expanded: boolean }>`
   border-bottom-right-radius: 4px;
   transition: all 0s ease;
 
-  ${props => (props.expanded ? '' : 'transform: translateY(-50%) scaleY(0);')}
+  ${props => (props.expanded ? '' : 'display: none; transform: translateY(-50%) scaleY(0);')}
 `;
 
 export const ServerItem = styled.div`
