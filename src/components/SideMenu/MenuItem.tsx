@@ -30,7 +30,7 @@ export class MenuItem extends React.Component<MenuItemProps> {
       const qryString = `[data-focusId="${this.props.item.id}"]`;
       const elemForFocus = querySelector(qryString);
       // @ts-ignore
-      elemForFocus?.focus();  // this shows as a 'does not exist' error, but it does.
+      (elemForFocus as any)?.focus();  // this shows as a 'does not exist' error, but it does.
     }
   };
 

@@ -51,7 +51,7 @@ export class Operation extends React.Component<OperationProps> {
       const qryString = `[data-item-id="${this.props.operation.id}"]`;
       const elemForFocus = querySelector(qryString);
       // @ts-ignore
-      elemForFocus?.focus();  // this shows as a 'does not exist' error, but it does.
+      (elemForFocus as any)?.focus();  // this shows as a 'does not exist' error, but it does.
     }
   };
 
