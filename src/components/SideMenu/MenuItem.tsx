@@ -7,6 +7,9 @@ import { IMenuItem, OperationModel } from '../../services';
 import { shortenHTTPVerb } from '../../utils/openapi';
 import { MenuItems } from './MenuItems';
 import { MenuItemLabel, MenuItemLi, MenuItemTitle, OperationBadge } from './styled.elements';
+import { querySelector } from '../../utils/dom';
+// import { Operation } from '../Operation/Operation';
+//import * as ReactDOM from 'react-dom';
 
 export interface MenuItemProps {
   item: IMenuItem;
@@ -19,9 +22,15 @@ export class MenuItem extends React.Component<MenuItemProps> {
   ref = React.createRef<HTMLLabelElement>();
 
   handleKeyDown = (event: React.KeyboardEvent<HTMLLIElement>) => {
-    if (event.keyCode === 13) { // ENTER
+    if (event.key === 'Enter' || event.key === 'ArrowRight') {
       this.props.onActivate!(this.props.item);
       event.stopPropagation();
+
+      // set the focus to the heading of the endpoint
+      const qryString = `[data-focusId="${this.props.item.id}"]`;
+      const elemForFocus = querySelector(qryString);
+      // @ts-ignore
+      elemForFocus?.focus();  // this shows as a 'does not exist' error, but it does.
     }
   };
 

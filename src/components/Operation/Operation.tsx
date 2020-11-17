@@ -17,6 +17,7 @@ import { Parameters } from '../Parameters/Parameters';
 import { ResponsesList } from '../Responses/ResponsesList';
 import { SecurityRequirements } from '../SecurityRequirement/SecurityRequirement';
 import { OperationBadge } from '../SideMenu';
+import { querySelector } from '../../utils/dom';
 
 const OperationRow = styled(Row)`
   backface-visibility: hidden;
@@ -35,6 +36,24 @@ export interface OperationProps {
 
 @observer
 export class Operation extends React.Component<OperationProps> {
+  ref = React.createRef<HTMLHeadingElement>();
+
+  constructor(props) {
+    super(props);
+  }
+
+  handleKeyDown = (event: React.KeyboardEvent<HTMLHeadingElement>) => {
+    if (event.key === 'Enter' || event.key === 'ArrowLeft') { // || (event.key === 'Tab' && event.shiftKey)
+      event.preventDefault();
+      event.stopPropagation();
+
+      // set the focus to the menu item for this heading of the endpoint
+      const qryString = `[data-item-id="${this.props.operation.id}"]`;
+      const elemForFocus = querySelector(qryString);
+      // @ts-ignore
+      elemForFocus?.focus();  // this shows as a 'does not exist' error, but it does.
+    }
+  };
 
   render() {
     const { operation } = this.props;
@@ -53,7 +72,8 @@ export class Operation extends React.Component<OperationProps> {
                 </div>
                 <div style={{ margin: '-5px 0 0 7px' }}>
                   <div style={{ fontWeight: 'bolder' }}>
-                    <H2 style={{ marginTop: '6px' }} tabIndex={0}>
+                    <H2 style={{ marginTop: '6px' }} tabIndex={0} data-focusId={operation.id} ref={this.ref}
+                      onKeyDown={this.handleKeyDown}>
                       {summary} {deprecated && <Badge type="warning"> Deprecated </Badge>}
                     </H2>
                   </div>
