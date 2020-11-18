@@ -36,21 +36,15 @@ export interface OperationProps {
 
 @observer
 export class Operation extends React.Component<OperationProps> {
-  ref = React.createRef<HTMLHeadingElement>();
-
-  constructor(props) {
-    super(props);
-  }
 
   handleKeyDown = (event: React.KeyboardEvent<HTMLHeadingElement>) => {
-    if (event.key === 'Enter' || event.key === 'ArrowLeft') { // || (event.key === 'Tab' && event.shiftKey)
+    if (event.key === 'Enter' || event.key === 'ArrowLeft') {
       event.preventDefault();
       event.stopPropagation();
 
       // set the focus to the menu item for this heading of the endpoint
       const qryString = `[data-item-id="${this.props.operation.id}"]`;
       const elemForFocus = querySelector(qryString);
-      // @ts-ignore
       (elemForFocus as any)?.focus();  // this shows as a 'does not exist' error, but it does.
     }
   };
@@ -72,7 +66,7 @@ export class Operation extends React.Component<OperationProps> {
                 </div>
                 <div style={{ margin: '-5px 0 0 7px' }}>
                   <div style={{ fontWeight: 'bolder' }}>
-                    <H2 style={{ marginTop: '6px' }} tabIndex={0} data-focusId={operation.id} ref={this.ref}
+                    <H2 style={{ marginTop: '6px' }} tabIndex={0} data-focusId={operation.id}
                       onKeyDown={this.handleKeyDown}>
                       {summary} {deprecated && <Badge type="warning"> Deprecated </Badge>}
                     </H2>

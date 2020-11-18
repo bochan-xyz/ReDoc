@@ -1,4 +1,3 @@
-// import { observe } from 'mobx';
 import { observer } from 'mobx-react';
 import * as React from 'react';
 
@@ -8,8 +7,6 @@ import { shortenHTTPVerb } from '../../utils/openapi';
 import { MenuItems } from './MenuItems';
 import { MenuItemLabel, MenuItemLi, MenuItemTitle, OperationBadge } from './styled.elements';
 import { querySelector } from '../../utils/dom';
-// import { Operation } from '../Operation/Operation';
-//import * as ReactDOM from 'react-dom';
 
 export interface MenuItemProps {
   item: IMenuItem;
@@ -29,7 +26,6 @@ export class MenuItem extends React.Component<MenuItemProps> {
       // set the focus to the heading of the endpoint
       const qryString = `[data-focusId="${this.props.item.id}"]`;
       const elemForFocus = querySelector(qryString);
-      // @ts-ignore
       (elemForFocus as any)?.focus();  // this shows as a 'does not exist' error, but it does.
     }
   };

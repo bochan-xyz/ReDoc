@@ -7611,7 +7611,7 @@ var ErrorBoundary_ErrorBoundary = /** @class */ (function (_super) {
                 external_react_["createElement"]("br", null),
                 external_react_["createElement"]("small", null,
                     " Commit: ",
-                    "8828eb33"));
+                    "ed58ad79"));
         }
         return external_react_["Children"].only(this.props.children);
     };
@@ -12875,14 +12875,13 @@ var MenuItems_MenuItems = /** @class */ (function (_super) {
 
 // CONCATENATED MODULE: ./src/components/SideMenu/MenuItem.tsx
 
-// import { observe } from 'mobx';
 
 
 
 
 
 
- // import { Operation } from '../Operation/Operation';
+
 var MenuItem_MenuItem = /** @class */ (function (_super) {
     Object(external_tslib_["__extends"])(MenuItem, _super);
     function MenuItem() {
@@ -12894,7 +12893,7 @@ var MenuItem_MenuItem = /** @class */ (function (_super) {
                 _this.props.onActivate(_this.props.item);
                 event.stopPropagation(); // set the focus to the heading of the endpoint
                 var qryString = "[data-focusId=\"" + _this.props.item.id + "\"]";
-                var elemForFocus = querySelector(qryString); // @ts-ignore
+                var elemForFocus = querySelector(qryString);
                 (_a = elemForFocus) === null || _a === void 0 ? void 0 : _a.focus(); // this shows as a 'does not exist' error, but it does.
             }
         };
@@ -14099,17 +14098,15 @@ var Description = styled_components.div(Operation_templateObject_2 || (Operation
 });
 var Operation_Operation = /** @class */ (function (_super) {
     Object(external_tslib_["__extends"])(Operation, _super);
-    function Operation(props) {
-        var _this = _super.call(this, props) || this;
-        _this.ref = external_react_["createRef"]();
+    function Operation() {
+        var _this = _super !== null && _super.apply(this, arguments) || this;
         _this.handleKeyDown = function (event) {
             var _a;
             if (event.key === 'Enter' || event.key === 'ArrowLeft') {
-                // || (event.key === 'Tab' && event.shiftKey)
                 event.preventDefault();
                 event.stopPropagation(); // set the focus to the menu item for this heading of the endpoint
                 var qryString = "[data-item-id=\"" + _this.props.operation.id + "\"]";
-                var elemForFocus = querySelector(qryString); // @ts-ignore
+                var elemForFocus = querySelector(qryString);
                 (_a = elemForFocus) === null || _a === void 0 ? void 0 : _a.focus(); // this shows as a 'does not exist' error, but it does.
             }
         };
@@ -14137,7 +14134,7 @@ var Operation_Operation = /** @class */ (function (_super) {
                             } },
                             external_react_["createElement"](H2, { style: {
                                     marginTop: '6px'
-                                }, tabIndex: 0, "data-focusId": operation.id, ref: _this.ref, onKeyDown: _this.handleKeyDown },
+                                }, tabIndex: 0, "data-focusId": operation.id, onKeyDown: _this.handleKeyDown },
                                 summary,
                                 " ",
                                 deprecated && external_react_["createElement"](Badge, { type: "warning" }, " Deprecated "))),
