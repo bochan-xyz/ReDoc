@@ -34,9 +34,10 @@ export const H3 = styled.h2`
   ${extensionsHook('H3')};
 `;
 
-export const RightPanelHeader = styled.h3`
+export const RightPanelHeader = styled.div`
   color: ${({ theme }) => theme.rightPanel.textColor};
-
+  font-size: 14px;
+  line-height: 17px;
   ${extensionsHook('RightPanelHeader')};
 `;
 

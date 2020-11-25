@@ -15,7 +15,6 @@ export interface DropdownProps {
 
 export const StyledDropdown = styled(Dropdown)`
   min-width: 100px;
-  display: inline-block;
   position: relative;
   width: auto;
   font-family: ${props => props.theme.typography.headings.fontFamily};
@@ -23,7 +22,6 @@ export const StyledDropdown = styled(Dropdown)`
   .Dropdown-control {
     font-family: ${props => props.theme.typography.headings.fontFamily};
     position: relative;
-    font-size: 0.929em;
     width: 100%;
     line-height: 1.5em;
     vertical-align: middle;
@@ -93,11 +91,13 @@ export const StyledDropdown = styled(Dropdown)`
     }
   }
 `;
+export const JunkErrorItem = styled(StyledDropdown)`
+`;
 
 export const SimpleDropdown = styled(StyledDropdown)`
-  margin-left: 10px;
-  text-transform: none;
-  font-size: 0.969em;
+margin-left: 10px;
+text-transform: none;
+font-size: 12px;
 
   .Dropdown-control {
     font-size: 1em;
@@ -105,16 +105,16 @@ export const SimpleDropdown = styled(StyledDropdown)`
     padding: 0 1.2em 0 0;
     background: transparent;
 
-    &:hover {
-      color: ${props => props.theme.colors.primary.main};
-      box-shadow: none;
-    }
+    &: hover {
+    color: ${props => props.theme.colors.primary.main};
+    box-shadow: none;
   }
+}
 `;
 
 export const MimeLabel = styled.span`
-  margin-left: 10px;
-  text-transform: none;
-  font-size: 0.929em;
-  color: black;
+margin-left: 10px;
+text-transform: none;
+font-size: 12px;
+color: black;
 `;

@@ -69,7 +69,7 @@ export class Endpoint extends React.Component<EndpointProps, EndpointState> {
               <ServerRelativeURL>{operation.path}</ServerRelativeURL>
               <ShelfIcon
                 float={'right'}
-                color={inverted ? 'black' : 'white'}
+                color={inverted ? 'black' : '#0084CE'}
                 size={'20px'}
                 direction={expanded ? 'up' : 'down'}
                 style={{ marginRight: '-25px' }}

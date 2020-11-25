@@ -3,8 +3,9 @@ import * as React from 'react';
 
 import { OperationModel } from '../../services/models';
 
-import { RightPanelHeader, Tab, TabList, TabPanel, Tabs } from '../../common-elements';
+import { Tab, TabList, TabPanel, ResponseTabs } from '../../common-elements';
 import { PayloadSamples } from '../PayloadSamples/PayloadSamples';
+import styled from '../../styled-components';
 
 export interface ResponseSamplesProps {
   operation: OperationModel;
@@ -22,28 +23,42 @@ export class ResponseSamples extends React.Component<ResponseSamplesProps> {
 
     return (
       (responses.length > 0 && (
-        <div>
-          <RightPanelHeader> Response samples </RightPanelHeader>
+        <ResponseSpacer>
 
-          <Tabs defaultIndex={0}>
+          <ResponseTabs defaultIndex={0}>
+
+            <ResponseTop>&nbsp;&nbsp;Response samples
             <TabList>
-              {responses.map(response => (
-                <Tab className={'tab-' + response.type} key={response.code} tabIndex={'0'}>
-                  {response.code}
-                </Tab>
-              ))}
-            </TabList>
+                {responses.map(response => (
+                  <Tab className={'tab-' + response.type} key={response.code} tabIndex={'0'}>
+                    {response.code}
+                  </Tab>
+                ))}
+              </TabList>
+            </ResponseTop>
             {responses.map(response => (
               <TabPanel key={response.code}>
-                <div>
-                  <PayloadSamples content={response.content!} />
-                </div>
+                <ResponseArea>
+                  <PayloadSamples content={response.content!} displayTone='RESPONSE' />
+                </ResponseArea>
               </TabPanel>
             ))}
-          </Tabs>
-        </div>
+          </ResponseTabs>
+        </ResponseSpacer>
       )) ||
       null
     );
   }
 }
+
+const ResponseArea = styled.div`
+  color: black;
+`;
+
+const ResponseTop = styled.div`
+  display: block;
+`;
+
+const ResponseSpacer = styled.div`
+  padding-top: 20px;
+`;

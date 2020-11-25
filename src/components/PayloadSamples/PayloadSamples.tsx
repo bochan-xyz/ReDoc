@@ -8,11 +8,14 @@ import { MediaTypeSamples } from './MediaTypeSamples';
 
 import { MediaContentModel } from '../../services/models';
 import { DropdownOrLabel } from '../DropdownOrLabel/DropdownOrLabel';
+import { DropdownLabel } from '../PayloadSamples/styled.elements';
 import { MediaTypesSwitch } from '../MediaTypeSwitch/MediaTypesSwitch';
 import { InvertedSimpleDropdown, MimeLabel } from './styled.elements';
+import styled from '../../styled-components';
 
 export interface PayloadSamplesProps {
   content: MediaContentModel;
+  displayTone: string;
 }
 
 @observer
@@ -24,7 +27,7 @@ export class PayloadSamples extends React.Component<PayloadSamplesProps> {
     }
 
     return (
-      <MediaTypesSwitch content={mimeContent} renderDropdown={this.renderDropdown} withLabel={true}>
+      <MediaTypesSwitch content={mimeContent} renderDropdown={this.renderDropdown} withLabel={false} displayTone={this.props.displayTone}>
         {mediaType => (
           <MediaTypeSamples
             key="samples"
@@ -37,6 +40,26 @@ export class PayloadSamples extends React.Component<PayloadSamplesProps> {
   }
 
   private renderDropdown = props => {
-    return <DropdownOrLabel Label={MimeLabel} Dropdown={InvertedSimpleDropdown} {...props} />;
+    if (this.props.displayTone === 'REQUEST') {
+      return <RequestTabHeader><DropdownLabel>Content type: </DropdownLabel><DropdownOrLabel Label={MimeLabel} Dropdown={InvertedSimpleDropdown} {...props} /></RequestTabHeader>;
+    } else {
+      return <ResponseTabHeader><DropdownLabel>Content type: </DropdownLabel><DropdownOrLabel Label={MimeLabel} Dropdown={InvertedSimpleDropdown} {...props} /></ResponseTabHeader>;
+    }
   };
 }
+
+const RequestTabHeader = styled.div`
+  background-color: #CBD3D9;
+  border-radius: 10px 10px 0px 0px;
+  margin: -20px -20px 0px -20px;
+  padding: 4px;
+  display: block;
+`;
+
+const ResponseTabHeader = styled.div`
+  background-color: #CBD3D9;
+  border-radius: 10px 10px 0px 0px;
+  margin: -20px -20px 0px -20px;
+  padding: 4px;
+  display: block;
+`;

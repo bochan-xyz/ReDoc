@@ -13,6 +13,7 @@ export interface MediaTypeChildProps {
 export interface MediaTypesSwitchProps {
   content?: MediaContentModel;
   withLabel?: boolean;
+  displayTone: string;
 
   renderDropdown: (props: DropdownProps) => JSX.Element;
   children: (activeMime: MediaTypeModel) => JSX.Element;
@@ -44,11 +45,11 @@ export class MediaTypesSwitch extends React.Component<MediaTypesSwitchProps> {
       this.props.withLabel ? (
         <DropdownWrapper>
           <DropdownLabel>Content type</DropdownLabel>
-          {children}
-        </DropdownWrapper>
+          { children}
+        </DropdownWrapper >
       ) : (
-        children
-      );
+          children
+        );
 
     return (
       <>

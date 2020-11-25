@@ -4,8 +4,9 @@ import { isPayloadSample, OperationModel, RedocNormalizedOptions } from '../../s
 import { PayloadSamples } from '../PayloadSamples/PayloadSamples';
 import { SourceCodeWithCopy } from '../SourceCode/SourceCode';
 
-import { RightPanelHeader, Tab, TabList, TabPanel, Tabs } from '../../common-elements';
+import { Tab, TabList, TabPanel, RequestTabs } from '../../common-elements';
 import { OptionsContext } from '../OptionsProvider';
+import styled from '../../styled-components';
 
 export interface RequestSamplesProps {
   operation: OperationModel;
@@ -25,32 +26,45 @@ export class RequestSamples extends React.Component<RequestSamplesProps> {
     const hideTabList = samples.length === 1 ? this.context.hideSingleRequestSampleTab : false;
     return (
       (hasSamples && (
-        <div>
-          <RightPanelHeader> Request samples </RightPanelHeader>
+        <ResponseSpacer>
 
-          <Tabs defaultIndex={0}>
+          <RequestTabs defaultIndex={0}>
+            <RequestTop>&nbsp;&nbsp;Request samples
             <TabList hidden={hideTabList}>
-              {samples.map(sample => (
-                <Tab key={sample.lang + '_' + (sample.label || '')} tabIndex={'0'} >
-                  {sample.label !== undefined ? sample.label : sample.lang}
-                </Tab>
-              ))}
-            </TabList>
+                {samples.map(sample => (
+                  <Tab key={sample.lang + '_' + (sample.label || '')} tabIndex={'0'} >
+                    {sample.label !== undefined ? sample.label : sample.lang}
+                  </Tab>
+                ))}
+              </TabList>
+            </RequestTop>
             {samples.map(sample => (
-              <TabPanel key={sample.lang + '_' + (sample.label || '')}>
+              <TabPanel key={sample.lang + '_' + (sample.label || '')} >
                 {isPayloadSample(sample) ? (
-                  <div>
-                    <PayloadSamples content={sample.requestBodyContent} />
-                  </div>
+                  <RequestArea>
+                    <PayloadSamples content={sample.requestBodyContent} displayTone='REQUEST' />
+                  </RequestArea>
                 ) : (
                     <SourceCodeWithCopy lang={sample.lang} source={sample.source} />
                   )}
               </TabPanel>
             ))}
-          </Tabs>
-        </div>
+          </RequestTabs>
+        </ResponseSpacer>
       )) ||
       null
     );
   }
 }
+
+const RequestArea = styled.div`
+  color: black;
+`;
+
+const RequestTop = styled.div`
+  display: block;
+`;
+
+const ResponseSpacer = styled.div`
+  padding-top: 20px;
+`;

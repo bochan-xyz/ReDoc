@@ -17,7 +17,7 @@ export class ResponseDetails extends React.PureComponent<{ response: ResponseMod
       <>
         {description && <Markdown source={description} />}
         <ResponseHeaders headers={headers} />
-        <MediaTypesSwitch content={content} renderDropdown={this.renderDropdown}>
+        <MediaTypesSwitch content={content} renderDropdown={this.renderDropdown} displayTone="RESPONSE">
           {({ schema }) => {
             return <Schema skipWriteOnly={true} key="schema" schema={schema} />;
           }}
