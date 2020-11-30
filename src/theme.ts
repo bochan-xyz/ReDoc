@@ -342,7 +342,7 @@ export interface ResolvedThemeInterface {
   };
   endPoint: {
     backgroundColor: string;
-  }
+  };
 
   extensionsHook?: (name: string, props: any) => string;
 }

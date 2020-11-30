@@ -19,6 +19,8 @@ export const DropdownLabel = styled.span`
   font-size: 12px;
   font-weight: ${({ theme }) => theme.typography.fontWeightBold};
   padding-left: 10px;
+  min-width: 100px;
+  display: inline-block;
 `;
 
 export const DropdownWrapper = styled.div`

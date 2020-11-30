@@ -32,7 +32,7 @@ export class PayloadSamples extends React.Component<PayloadSamplesProps> {
           <MediaTypeSamples
             key="samples"
             mediaType={mediaType}
-            renderDropdown={this.renderDropdown}
+            renderDropdown={this.renderSamplesDropdown}
           />
         )}
       </MediaTypesSwitch>
@@ -46,13 +46,21 @@ export class PayloadSamples extends React.Component<PayloadSamplesProps> {
       return <ResponseTabHeader><DropdownLabel>Content type: </DropdownLabel><DropdownOrLabel Label={MimeLabel} Dropdown={InvertedSimpleDropdown} {...props} /></ResponseTabHeader>;
     }
   };
+
+  private renderSamplesDropdown = props => {
+    if (this.props.displayTone === 'REQUEST') {
+      return <RequestSamplesTabHeader><DropdownLabel>Example: </DropdownLabel><DropdownOrLabel Label={MimeLabel} Dropdown={InvertedSimpleDropdown} {...props} /></RequestSamplesTabHeader>;
+    } else {
+      return <ResponseSamplesTabHeader><DropdownLabel>Example: </DropdownLabel><DropdownOrLabel Label={MimeLabel} Dropdown={InvertedSimpleDropdown} {...props} /></ResponseSamplesTabHeader>;
+    }
+  };
 }
 
 const RequestTabHeader = styled.div`
   background-color: #CBD3D9;
   border-radius: 10px 10px 0px 0px;
   margin: -20px -20px 0px -20px;
-  padding: 4px;
+  padding: 4px 4px 4px 4px;
   display: block;
 `;
 
@@ -60,6 +68,18 @@ const ResponseTabHeader = styled.div`
   background-color: #CBD3D9;
   border-radius: 10px 10px 0px 0px;
   margin: -20px -20px 0px -20px;
-  padding: 4px;
+  padding: 4px 4px 4px 4px;
   display: block;
+`;
+
+const RequestSamplesTabHeader = styled.div`
+  background-color: #CBD3D9;
+  margin: 0px -20px 0px -20px;
+  padding: 4px;
+`;
+
+const ResponseSamplesTabHeader = styled.div`
+background-color: #CBD3D9;
+margin: 0px -20px 0px -20px;
+padding: 4px;
 `;

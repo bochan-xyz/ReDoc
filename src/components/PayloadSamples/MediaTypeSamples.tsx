@@ -6,7 +6,7 @@ import { DropdownProps } from '../../common-elements';
 import { MediaTypeModel } from '../../services/models';
 import { Markdown } from '../Markdown/Markdown';
 import { Example } from './Example';
-import { DropdownLabel, DropdownWrapper, NoSampleLabel } from './styled.elements';
+import { DropdownWrapper, NoSampleLabel } from './styled.elements';
 
 export interface PayloadSamplesProps {
   mediaType: MediaTypeModel;
@@ -52,7 +52,6 @@ export class MediaTypeSamples extends React.Component<PayloadSamplesProps, Media
       return (
         <SamplesWrapper>
           <DropdownWrapper>
-            <DropdownLabel>Example</DropdownLabel>
             {this.props.renderDropdown({
               value: options[activeIdx],
               options,
