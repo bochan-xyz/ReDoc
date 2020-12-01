@@ -125,11 +125,8 @@ const defaultTheme: ThemeInterface = {
   menu: {
     width: '260px',
     backgroundColor: '#FFFFFF',
-    textColor: '#232E72',
-    activeTextColor: theme =>
-      theme.menu.textColor !== defaultTheme.menu!.textColor
-        ? theme.menu.textColor
-        : theme.colors.primary.main,
+    textColor: '#0084ce',
+    activeTextColor: '#111b58',
     groupItems: {
       textTransform: 'uppercase',
     },
