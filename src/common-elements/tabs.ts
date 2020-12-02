@@ -105,13 +105,13 @@ export const JunkErrorTabs = styled(Tabs)`
 
 export const ResponseTabs = styled(Tabs)`
   > .react-tabs__tab-panel {
-    background-color: #F4F8FB;
+    background-color: #E8EEF3;
   }
 `;
 
 export const RequestTabs = styled(Tabs)`
   > .react-tabs__tab-panel {
-    background-color: #F4F8FB;
+    background-color: #E8EEF3;
   }
 `;
 
