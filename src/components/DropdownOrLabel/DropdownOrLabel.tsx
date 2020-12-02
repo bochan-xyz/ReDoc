@@ -8,9 +8,9 @@ export interface DropdownOrLabelProps extends DropdownProps {
 }
 
 export function DropdownOrLabel(props: DropdownOrLabelProps): JSX.Element {
-  const { Label = MimeLabel, Dropdown = SimpleDropdown } = props;
+  const { Dropdown = SimpleDropdown } = props;
   if (props.options.length === 1) {
-    return <Label>{props.options[0].label}</Label>;
+    return <MimeLabel>{props.options[0].label}</MimeLabel>;
   }
   return <Dropdown {...props} />;
 }

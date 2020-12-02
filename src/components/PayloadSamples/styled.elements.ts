@@ -17,12 +17,10 @@ export const MimeLabel = styled.div`
 export const DropdownLabel = styled.span`
   font-family: ${({ theme }) => theme.typography.headings.fontFamily};
   font-size: 12px;
-  position: absolute;
-  z-index: 1;
-  top: -11px;
-  left: 12px;
   font-weight: ${({ theme }) => theme.typography.fontWeightBold};
-  color: ${({ theme }) => transparentize(0.6, theme.rightPanel.textColor)};
+  padding-left: 10px;
+  min-width: 100px;
+  display: inline-block;
 `;
 
 export const DropdownWrapper = styled.div`
@@ -32,18 +30,14 @@ export const DropdownWrapper = styled.div`
 export const InvertedSimpleDropdown = styled(StyledDropdown)`
   margin-left: 10px;
   text-transform: none;
-  font-size: 0.929em;
-  margin: 0 0 10px 0;
-  display: block;
-  background-color: ${({ theme }) => transparentize(0.6, theme.rightPanel.backgroundColor)};
+  font-size:12px;
+  display: inline-block;
   .Dropdown-control {
     margin-top: 0;
   }
   .Dropdown-control,
   .Dropdown-control:hover {
-    font-size: 1em;
     border: none;
-    padding: 0.9em 1.6em 0.9em 0.9em;
     background: transparent;
     color: ${({ theme }) => theme.rightPanel.textColor};
     box-shadow: none;

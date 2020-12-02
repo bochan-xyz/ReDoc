@@ -147,13 +147,16 @@ const defaultTheme: ThemeInterface = {
     gutter: '2px',
   },
   rightPanel: {
-    backgroundColor: '#3C3C3C',
+    backgroundColor: 'white',
     width: '40%',
-    textColor: '#ffffff',
+    textColor: 'black',
   },
   codeSample: {
     backgroundColor: ({ rightPanel }) => darken(0.1, rightPanel.backgroundColor),
   },
+  endPoint: {
+    backgroundColor: '#3F4950',
+  }
 };
 
 function resolveFontFamily() {
@@ -335,6 +338,9 @@ export interface ResolvedThemeInterface {
     width: string;
   };
   codeSample: {
+    backgroundColor: string;
+  };
+  endPoint: {
     backgroundColor: string;
   };
 

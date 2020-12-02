@@ -2,9 +2,12 @@ import styled from '../styled-components';
 import { PrismDiv } from './PrismDiv';
 
 export const SampleControls = styled.div`
-  opacity: 0.4;
-  transition: opacity 0.3s ease;
+  font-size: 12px;
   text-align: right;
+  color: #0084CE;
+  background-color: #E8EEF2;
+  border: 1px solid #CBD3D9;
+  margin: 0px -20px 0px -20px;
 
   > span {
     display: inline-block;
@@ -12,7 +15,7 @@ export const SampleControls = styled.div`
     cursor: pointer;
 
     :hover {
-      background: rgba(255, 255, 255, 0.1);
+      color: #004267;
     }
   }
 `;

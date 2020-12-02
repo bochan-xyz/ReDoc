@@ -24,7 +24,7 @@ export class MenuItem extends React.Component<MenuItemProps> {
       event.stopPropagation();
 
       // set the focus to the heading of the endpoint
-      const qryString = `[data-focusId="${this.props.item.id}"]`;
+      const qryString = `[data-focusid="${this.props.item.id}"]`;
       const elemForFocus = querySelector(qryString);
       (elemForFocus as any)?.focus();  // this shows as a 'does not exist' error, but it does.
     }

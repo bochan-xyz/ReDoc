@@ -12,13 +12,14 @@ export const ServerRelativeURL = styled.span`
   flex: 1;
   overflow-x: hidden;
   text-overflow: ellipsis;
+  color: white;
 `;
 
 export const EndpointInfo = styled.div<{ expanded?: boolean; inverted?: boolean }>`
   padding: 10px 30px 10px ${props => (props.inverted ? '10px' : '20px')};
-  border-radius: ${props => (props.inverted ? '0' : '4px 4px 0 0')};
+  border-radius: ${props => (props.inverted ? '0' : '10px 10px 0 0')};
   background-color: ${props =>
-    props.inverted ? 'transparent' : props.theme.codeSample.backgroundColor};
+    props.inverted ? 'transparent' : props.theme.endPoint.backgroundColor};
   display: flex;
   white-space: nowrap;
   align-items: center;
@@ -51,13 +52,13 @@ export const ServersOverlay = styled.div<{ expanded: boolean }>`
   position: absolute;
   width: 100%;
   z-index: 100;
-  background: #fafafa;
-  color: #263238;
+  background: #2C3237;
+  color: white;
   box-sizing: border-box;
   box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.33);
   overflow: hidden;
-  border-bottom-left-radius: 4px;
-  border-bottom-right-radius: 4px;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
   transition: all 0s ease;
 
   ${props => (props.expanded ? '' : 'display: none; transform: translateY(-50%) scaleY(0);')}
