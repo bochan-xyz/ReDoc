@@ -51,12 +51,12 @@ export const RecursiveLabel = styled(FieldLabel)`
 `;
 
 export const NullableLabel = styled(FieldLabel)`
-  color: #3195a6;
+  color: #008383;
   font-size: 13px;
 `;
 
 export const PatternLabel = styled(FieldLabel)`
-  color: #3195a6;
+  color: #008383;
   &::before,
   &::after {
     font-weight: bold;
@@ -66,12 +66,9 @@ export const PatternLabel = styled(FieldLabel)`
 export const ExampleValue = styled(FieldLabel)`
   border-radius: 2px;
   ${({ theme }) => `
-    background-color: ${transparentize(0.95, theme.colors.text.primary)};
-    color: ${transparentize(0.1, theme.colors.text.primary)};
-
+    color: #008383;
     padding: 0 ${theme.spacing.unit}px;
     border: 1px solid ${transparentize(0.9, theme.colors.text.primary)};
-    font-family: ${theme.typography.code.fontFamily};
 }`};
   & + & {
     margin-left: 0;
@@ -82,15 +79,10 @@ export const ExampleValue = styled(FieldLabel)`
 export const ExtensionValue = styled(ExampleValue)``;
 
 export const ConstraintItem = styled(FieldLabel)`
-  border-radius: 2px;
   ${({ theme }) => `
-    background-color: ${transparentize(0.95, theme.colors.primary.light)};
-    color: ${transparentize(0.1, theme.colors.primary.main)};
-
+    color: #0084CE;
     margin: 0 ${theme.spacing.unit}px;
     padding: 0 ${theme.spacing.unit}px;
-    border: 1px solid ${transparentize(0.9, theme.colors.primary.main)};
-    font-family: ${theme.typography.code.fontFamily};
 }`};
   & + & {
     margin-left: 0;
