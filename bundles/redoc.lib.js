@@ -7611,7 +7611,7 @@ var ErrorBoundary_ErrorBoundary = /** @class */ (function (_super) {
                 external_react_["createElement"]("br", null),
                 external_react_["createElement"]("small", null,
                     " Commit: ",
-                    "ee50e805"));
+                    "88ad7baa"));
         }
         return external_react_["Children"].only(this.props.children);
     };
@@ -12821,14 +12821,14 @@ var MenuItemLabel = styled_components.label.attrs(function (props) { return ({
     className: external_classnames_('-depth' + props.depth, {
         active: props.active
     })
-}); })(styled_elements_templateObject_7 || (styled_elements_templateObject_7 = Object(external_tslib_["__makeTemplateObject"])(["\n  cursor: pointer;\n  ", ";\n  ", ";\n  font-size: 14px;\n  ", ";\n  margin: 0;\n  padding: 6px 4px;\n  ", "\n  display: flex;\n  justify-content: space-between;\n  font-family: ", ";\n  ", ";\n  ", ";\n  ", ";\n\n", ";\n\n  &: hover {\n  background-color: ", ";\n  ", ";\n}\n\n", " {\n  height: ", ";\n  width: ", ";\n  polygon {\n    fill: ", ";\n  }\n}\n"], ["\n  cursor: pointer;\n  ", ";\n  ", ";\n  font-size: 14px;\n  ", ";\n  margin: 0;\n  padding: 6px 4px;\n  ",
-    "\n  display: flex;\n  justify-content: space-between;\n  font-family: ", ";\n  ", ";\n  ", ";\n  ", ";\n\n", ";\n\n  &: hover {\n  background-color: ", ";\n  ", ";\n}\n\n", " {\n  height: ",
+}); })(styled_elements_templateObject_7 || (styled_elements_templateObject_7 = Object(external_tslib_["__makeTemplateObject"])(["\n  cursor: pointer;\n  ", ";\n  ", ";\n  font-size: 14px;\n  ", ";\n  margin: 0;\n  padding: 6px 4px;\n  ", "\n  display: flex;\n  justify-content: space-between;\n  font-family: ", ";\n  ", ";\n  ", ";\n  ", ";\n\n  ", ";\n\n  &: hover {\n    background-color: ", ";\n    ", ";\n    ", " polygon { fill: white; }\n  }\n\n", " {\n  height: ", ";\n  width: ", ";\n  polygon {\n    fill: ", ";\n  }\n}\n"], ["\n  cursor: pointer;\n  ", ";\n  ", ";\n  font-size: 14px;\n  ", ";\n  margin: 0;\n  padding: 6px 4px;\n  ",
+    "\n  display: flex;\n  justify-content: space-between;\n  font-family: ", ";\n  ", ";\n  ", ";\n  ", ";\n\n  ", ";\n\n  &: hover {\n    background-color: ", ";\n    ", ";\n    ", " polygon { fill: white; }\n  }\n\n", " {\n  height: ",
     ";\n  width: ",
     ";\n  polygon {\n    fill: ",
     ";\n  }\n}\n"])), function (props) { return props.active && props.depth !== 0 ? 'color: ' + props.theme.menu.activeTextColor : ''; }, function (props) { return !(props.active && props.depth !== 0) ? 'color: ' + props.theme.menu.textColor : ''; }, function (props) { return props.depth === 0 ? 'font-weight: bold; font-style: italic;' : ''; }, function (_a) {
     var depth = _a.depth, type = _a.type, theme = _a.theme;
     return type === 'section' && depth > 1 && 'padding-left: ' + theme.spacing.unit * 8 + 'px;' || '';
-}, function (props) { return props.theme.typography.headings.fontFamily; }, function (props) { return menuItemDepth[props.depth]; }, function (props) { return props.active && props.depth !== 0 ? 'border-left:36px solid #00639b;' : ''; }, function (props) { return !(props.active && props.depth !== 0) ? 'border-left:36px solid white;' : ''; }, function (props) { return props.deprecated && deprecatedCss || ''; }, function (props) { return menuItemActiveBg(props.depth); }, function (props) { return props.depth > 0 ? 'color: white;' : ''; }, ShelfIcon, function (_a) {
+}, function (props) { return props.theme.typography.headings.fontFamily; }, function (props) { return menuItemDepth[props.depth]; }, function (props) { return props.active && props.depth !== 0 ? 'border-left:36px solid #00639b;' : ''; }, function (props) { return !(props.active && props.depth !== 0) ? 'border-left:36px solid white;' : ''; }, function (props) { return props.deprecated && deprecatedCss || ''; }, function (props) { return menuItemActiveBg(props.depth); }, function (props) { return props.depth > 0 ? 'color: white;' : ''; }, ShelfIcon, ShelfIcon, function (_a) {
     var theme = _a.theme;
     return theme.menu.arrow.size;
 }, function (_a) {
@@ -12925,7 +12925,7 @@ var MenuItem_MenuItem = /** @class */ (function (_super) {
                 external_react_["createElement"](MenuItemTitle, { title: item.name },
                     item.name,
                     this.props.children),
-                item.depth > 0 && item.items.length > 0 && external_react_["createElement"](ShelfIcon, { float: 'right', direction: item.expanded ? 'down' : 'right' }) || null),
+                item.depth > 0 && item.items.length > 0 && external_react_["createElement"](ShelfIcon, { float: 'right', direction: item.expanded ? 'up' : 'down' }) || null),
             !withoutChildren && item.items && item.items.length > 0 && external_react_["createElement"](MenuItems_MenuItems, { expanded: item.expanded, items: item.items, onActivate: this.props.onActivate }));
     };
     MenuItem = Object(external_tslib_["__decorate"])([
