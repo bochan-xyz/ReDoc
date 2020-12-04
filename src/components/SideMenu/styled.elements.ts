@@ -137,12 +137,13 @@ export const MenuItemLabel = styled.label.attrs((props: MenuItemLabelType) => ({
   ${props => (props.active && props.depth !== 0 ? 'border-left:36px solid #00639b;' : '')};
   ${props => (!(props.active && props.depth !== 0) ? 'border-left:36px solid white;' : '')};
 
-${props => (props.deprecated && deprecatedCss) || ''};
+  ${props => (props.deprecated && deprecatedCss) || ''};
 
   &: hover {
-  background-color: ${props => menuItemActiveBg(props.depth)};
-  ${props => (props.depth > 0) ? 'color: white;' : ''};
-}
+    background-color: ${props => menuItemActiveBg(props.depth)};
+    ${props => (props.depth > 0) ? 'color: white;' : ''};
+    ${ShelfIcon} polygon { fill: white; }
+  }
 
 ${ShelfIcon} {
   height: ${({ theme }) => theme.menu.arrow.size};
