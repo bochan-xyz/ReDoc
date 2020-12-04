@@ -20,7 +20,7 @@ const defaultTheme: ThemeInterface = {
       contrastText: ({ colors }) => readableColor(colors.primary.main),
     },
     success: {
-      main: '#00aa13',
+      main: '#077D14',
       light: ({ colors }) => lighten(colors.tonalOffset, colors.success.main),
       dark: ({ colors }) => darken(colors.tonalOffset, colors.success.main),
       contrastText: ({ colors }) => readableColor(colors.success.main),
@@ -32,7 +32,7 @@ const defaultTheme: ThemeInterface = {
       contrastText: '#ffffff',
     },
     error: {
-      main: '#e53935',
+      main: '#E00051',
       light: ({ colors }) => lighten(colors.tonalOffset, colors.error.main),
       dark: ({ colors }) => darken(colors.tonalOffset, colors.error.main),
       contrastText: ({ colors }) => readableColor(colors.error.main),
