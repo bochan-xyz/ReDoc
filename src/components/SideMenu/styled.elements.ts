@@ -62,11 +62,11 @@ export const OperationBadge = styled.span.attrs((props: { type: string }) => ({
   }
 `;
 
-function menuItemActiveBg(depth, { theme }): string {
+function menuItemActiveBg(depth): string {
   if (depth > 1) {
-    return darken(0.1, theme.menu.backgroundColor);
+    return '#00639b';
   } else if (depth === 1) {
-    return darken(0.05, theme.menu.backgroundColor);
+    return '#00639b';
   } else {
     return '';
   }
@@ -95,20 +95,16 @@ export const menuItemDepth = {
   0: css`
     opacity: 0.7;
     text-transform: ${({ theme }) => theme.menu.groupItems.textTransform};
-    font-size: 0.8em;
     padding-bottom: 0;
     cursor: default;
-    color: ${props => props.theme.menu.textColor};
   `,
   1: css`
-    font-size: 0.929em;
     text-transform: ${({ theme }) => theme.menu.level1Items.textTransform};
     &:hover {
       color: ${props => props.theme.menu.activeTextColor};
     }
   `,
   2: css`
-    color: ${props => props.theme.menu.textColor};
   `,
 };
 
@@ -126,42 +122,48 @@ export const MenuItemLabel = styled.label.attrs((props: MenuItemLabelType) => ({
   }),
 })) <MenuItemLabelType>`
   cursor: pointer;
-  color: ${props => (props.active ? props.theme.menu.activeTextColor : props.theme.menu.textColor)};
+  ${props => (props.active && props.depth !== 0 ? 'color: ' + props.theme.menu.activeTextColor : '')};
+  ${props => (!(props.active && props.depth !== 0) ? 'color: ' + props.theme.menu.textColor : '')};
+  font-size: 14px;
+  ${props => (props.depth === 0) ? 'font-weight: bold; font-style: italic;' : ''};
   margin: 0;
-  padding: 12.5px ${props => props.theme.spacing.unit * 4}px;
+  padding: 6px 4px;
   ${({ depth, type, theme }) =>
     (type === 'section' && depth > 1 && 'padding-left: ' + theme.spacing.unit * 8 + 'px;') || ''}
   display: flex;
   justify-content: space-between;
   font-family: ${props => props.theme.typography.headings.fontFamily};
   ${props => menuItemDepth[props.depth]};
-  background-color: ${props => (props.active ? menuItemActiveBg(props.depth, props) : '')};
+  ${props => (props.active && props.depth !== 0 ? 'border-left:36px solid #00639b;' : '')};
+  ${props => (!(props.active && props.depth !== 0) ? 'border-left:36px solid white;' : '')};
 
   ${props => (props.deprecated && deprecatedCss) || ''};
 
-  &:hover {
-    background-color: ${props => menuItemActiveBg(props.depth, props)};
+  &: hover {
+    background-color: ${props => menuItemActiveBg(props.depth)};
+    ${props => (props.depth > 0) ? 'color: white;' : ''};
+    ${ShelfIcon} polygon { fill: white; }
   }
 
-  ${ShelfIcon} {
-    height: ${({ theme }) => theme.menu.arrow.size};
-    width: ${({ theme }) => theme.menu.arrow.size};
-    polygon {
-      fill: ${({ theme }) => theme.menu.arrow.color};
-    }
+${ShelfIcon} {
+  height: ${({ theme }) => theme.menu.arrow.size};
+  width: ${({ theme }) => theme.menu.arrow.size};
+  polygon {
+    fill: ${({ theme }) => theme.menu.arrow.color};
   }
+}
 `;
 
 export const MenuItemTitle = styled.span<{ width?: string }>`
-  display: inline-block;
-  vertical-align: middle;
-  width: ${props => (props.width ? props.width : 'auto')};
-  overflow: hidden;
-  text-overflow: ellipsis;
+display: inline-block;
+vertical-align: middle;
+width: ${props => (props.width ? props.width : 'auto')};
+overflow: hidden;
+text-overflow: ellipsis;
 `;
 
 export const RedocAttribution = styled.div`
-  ${({ theme }) => `
+${({ theme }) => `
   font-size: 0.8em;
   margin-top: ${theme.spacing.unit * 2}px;
   padding: 0 ${theme.spacing.unit * 4}px;

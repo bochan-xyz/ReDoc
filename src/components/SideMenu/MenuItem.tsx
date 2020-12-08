@@ -31,7 +31,11 @@ export class MenuItem extends React.Component<MenuItemProps> {
   };
 
   activate = (evt: React.MouseEvent<HTMLElement>) => {
-    this.props.onActivate!(this.props.item);
+    if (this.props.item.depth === 0) {
+      evt.preventDefault();
+    } else {
+      this.props.onActivate!(this.props.item);
+    }
     evt.stopPropagation();
   };
 
@@ -52,8 +56,9 @@ export class MenuItem extends React.Component<MenuItemProps> {
   render() {
     const { item, withoutChildren } = this.props;
     return (
-      <MenuItemLi onClick={this.activate} depth={item.depth} data-item-id={item.id}
-        tabIndex={0} onKeyDown={this.handleKeyDown}>
+      <MenuItemLi onClick={this.activate} depth={item.depth}
+        data-item-id={item.id} tabIndex={(item.depth === 0) ? undefined : 0}
+        onKeyDown={this.handleKeyDown}>
         {item.type === 'operation' ? (
           <OperationMenuItemContent {...this.props} item={item as OperationModel} />
         ) : (
@@ -63,7 +68,7 @@ export class MenuItem extends React.Component<MenuItemProps> {
                 {this.props.children}
               </MenuItemTitle>
               {(item.depth > 0 && item.items.length > 0 && (
-                <ShelfIcon float={'right'} direction={item.expanded ? 'down' : 'right'} />
+                <ShelfIcon float={'right'} direction={item.expanded ? 'up' : 'down'} />
               )) ||
                 null}
             </MenuItemLabel>
