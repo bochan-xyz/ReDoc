@@ -32,6 +32,7 @@ export interface RedocRawOptions {
   expandSingleSchemaField?: boolean | string;
   apiGroupId?: string;
   apiGroupName?: string;
+  showGoBack?: boolean;
 
   unstable_ignoreMimeParameters?: boolean;
 
@@ -181,6 +182,7 @@ export class RedocNormalizedOptions {
   expandSingleSchemaField: boolean;
   apiGroupId: string | undefined;
   apiGroupName: string | undefined;
+  showGoBack: boolean | undefined;
 
   /* tslint:disable-next-line */
   unstable_ignoreMimeParameters: boolean;
@@ -227,6 +229,7 @@ export class RedocNormalizedOptions {
     this.expandSingleSchemaField = argValueToBoolean(raw.expandSingleSchemaField);
     this.apiGroupId = argValueToString(raw.apiGroupId);
     this.apiGroupName = argValueToString(raw.apiGroupName);
+    this.showGoBack = argValueToBoolean(raw.showGoBack);
 
     // eslint-disable-next-line @typescript-eslint/camelcase
     this.unstable_ignoreMimeParameters = argValueToBoolean(raw.unstable_ignoreMimeParameters);

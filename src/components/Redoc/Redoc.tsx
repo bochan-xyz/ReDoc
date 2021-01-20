@@ -6,6 +6,7 @@ import { AppStore } from '../../services';
 
 import { ThemeProvider } from '../../styled-components';
 import { ApiInfo } from '../ApiInfo/';
+import { ApiBackTo } from '../ApiBackTo/ApiBackTo';
 import { OptionsProvider } from '../OptionsProvider';
 
 import { SearchBox } from '../SearchBox/SearchBox';
@@ -42,6 +43,9 @@ export class Redoc extends React.Component<RedocProps> {
           <OptionsProvider value={options}>
             <RedocWrap className="redoc-wrap">
               <StickyResponsiveSidebar menu={menu} className="menu-content">
+                {options.showGoBack && (
+                  <ApiBackTo groupId={options.apiGroupId} groupName={options.apiGroupName} />
+                ) || null}
                 {(!options.disableSearch && (
                   <SearchBox
                     search={search!}
