@@ -1,6 +1,6 @@
 {
   "name": "otx-redoc",
-  "version": "21.1.7",
+  "version": "21.1.9",
   "description": "ReDoc",
   "repository": {
     "type": "git",
@@ -156,7 +156,7 @@
     "react-tabs": "^3.1.0",
     "slugify": "^1.4.0",
     "stickyfill": "^1.1.1",
-    "swagger2openapi": "^5.3.4",
+    "swagger2openapi": "^6.2.3",
     "tslib": "^1.11.1",
     "url-template": "^2.0.8"
   },
