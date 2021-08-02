@@ -44,7 +44,7 @@ export class Redoc extends React.Component<RedocProps> {
             <RedocWrap className="redoc-wrap">
               <StickyResponsiveSidebar menu={menu} className="menu-content">
                 {options.showGoBack && (
-                  <ApiBackTo groupId={options.apiGroupId} groupName={options.apiGroupName} />
+                  <ApiBackTo goBackUrl={options.goBackUrl} goBackText={options.goBackText} />
                 ) || null}
                 {(!options.disableSearch && (
                   <SearchBox

@@ -30,8 +30,8 @@ export interface RedocRawOptions {
   hideSchemaTitles?: boolean | string;
   payloadSampleIdx?: number;
   expandSingleSchemaField?: boolean | string;
-  apiGroupId?: string;
-  apiGroupName?: string;
+  goBackUrl?: string;
+  goBackText?: string;
   showGoBack?: boolean;
 
   unstable_ignoreMimeParameters?: boolean;
@@ -180,8 +180,8 @@ export class RedocNormalizedOptions {
   hideSchemaTitles: boolean;
   payloadSampleIdx: number;
   expandSingleSchemaField: boolean;
-  apiGroupId: string | undefined;
-  apiGroupName: string | undefined;
+  goBackUrl: string | undefined;
+  goBackText: string | undefined;
   showGoBack: boolean | undefined;
 
   /* tslint:disable-next-line */
@@ -227,8 +227,8 @@ export class RedocNormalizedOptions {
     this.hideSchemaTitles = argValueToBoolean(raw.hideSchemaTitles);
     this.payloadSampleIdx = RedocNormalizedOptions.normalizePayloadSampleIdx(raw.payloadSampleIdx);
     this.expandSingleSchemaField = argValueToBoolean(raw.expandSingleSchemaField);
-    this.apiGroupId = argValueToString(raw.apiGroupId);
-    this.apiGroupName = argValueToString(raw.apiGroupName);
+    this.goBackUrl = argValueToString(raw.goBackUrl);
+    this.goBackText = argValueToString(raw.goBackText);
     this.showGoBack = argValueToBoolean(raw.showGoBack);
 
     // eslint-disable-next-line @typescript-eslint/camelcase
